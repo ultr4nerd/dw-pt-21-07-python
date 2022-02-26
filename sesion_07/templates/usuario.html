@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Crear usuario</title>
+{% endblock title %}
+
+{% block content %}
+<h1>Crear usuario</h1>
+
+
+<form method="POST">
+  {{ form.csrf_token }}
+  {{ form.usuario.label }} {{ form.usuario }}
+  {{ form.correo.label }} {{ form.correo }}
+  <button type="submit">enviar</button>
+</form>
+{% endblock content %}
