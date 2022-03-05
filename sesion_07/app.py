@@ -23,9 +23,25 @@ def perfil(username):
 
 @app.route("/crear", methods=["GET", "POST"])
 def crear_usuario():
+    # Técnicas de debugging
+    # breakpoint()  # Python >= 3.7
+    # import pdb; pdb.set_trace()  # Python < 3.7
+    # print(f"{form=}")  # Imprimir valores de variable 
+
+    # Versión sin WTForms
+    # if request.method == 'POST':
+    #     username = request.form['username']
+    #     password = request.form['contrasena ']
+    #     print(username, password)
+
+    # Versión corta 
+    # if form.validate_on_submit():
+    #     return f"Bien hecho, {form.username.data}"
+
     form = UserForm()
-    if form.validate_on_submit():
-        return f"Bien hecho, {form.usuario.data}"
+    if request.method == 'POST' and form.validate():
+        form.save()
+        return f"Bien hecho, {form.username.data}"
     return render_template("usuario.html", form=form)
 
 

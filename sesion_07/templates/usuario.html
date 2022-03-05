@@ -7,11 +7,21 @@
 {% block content %}
 <h1>Crear usuario</h1>
 
+{% for error in form.username.errors %}
+<p style="color: red">{{error}}</p>
+{% endfor %}
 
 <form method="POST">
   {{ form.csrf_token }}
-  {{ form.usuario.label }} {{ form.usuario }}
-  {{ form.correo.label }} {{ form.correo }}
-  <button type="submit">enviar</button>
+  <p>
+    <label for="usuario-id">Usuario:</label>
+    <input type="text" name="username" id="usuario-id" />
+  </p>
+  <p>
+    <label for="email-id">Correo electrónico:</label>
+    <input type="email" name="email" id="email-id" />
+  </p>
+  <button type="submit">Enviar</button>
 </form>
+
 {% endblock content %}
